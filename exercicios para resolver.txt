@@ -1,0 +1,12 @@
+utilize uma das funções lambdas do javascript com arrays (map,filter,reduce,find,forEach)
+
+1) temos a seguinte situação um vetor let numbers = [1,2,3] e temos um outro 
+vetor vazio por enquanto let doubleNumbers = [] o vetor doubleNumbers vai ser o resultado dos elementos do array
+let numbers multiplicados por 2 qual das funções map,filter,reduce,find,forEach eu posso usar e implemente !!!
+
+2) temos a seguinte situação um vetor let numbers = [1,2,3]  e temos um outro 
+vetor vazio por enquanto let oddNumbers = [] o vetor oddNumbers vai ser o resultado dos elementos do array
+let numbers que são pares qual das funções map,filter,reduce,find,forEach eu posso usar e implemente !!!
+
+3) temos a seguinte situação um vetor let numbers = [1,2,3]  e uma variavel let average que vai receber a média destes
+números qual das funções map,filter,reduce,find,forEach eu posso usar e implemente !!!

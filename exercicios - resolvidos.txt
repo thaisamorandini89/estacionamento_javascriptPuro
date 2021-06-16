@@ -1,0 +1,130 @@
+ForEach
+
+Ele  muito bom para iterar elementos de um Array.
+
+Imagine que estamos em um restaurante e chegou 5 pedidos do aplicativo.
+
+Precisa ser apresentando na tela do Chefe para efetuar o preparo dos pedido.
+
+//Lista de Pedidos
+let pedidos = [
+{'id': 420, 'nome':'Dener', 'alimento': 'Sandubão de Bacon', 'bebida': 'Suco Limão' },
+{'id': 152, 'nome':'Naiady', 'alimento': 'Sandubão Vegano', 'bebida': 'Suco de Laranja' },
+{'id': 29, 'nome':'Marcio', 'alimento': 'Coxinha', 'bebida': 'Suco de Uva' },
+{'id': 33, 'nome':'Isabel', 'alimento': 'Sandubão de Picanha', 'bebida': 'Refrigerante' },
+{'id': 55, 'nome':'José', 'alimento': 'Pizza', 'bebida': 'Refrigerante' }
+];
+
+//Iterador forEach
+pedidos.forEach( ( pedido, index ) => { //eu passo para a callbak o objeto "pedido" e o indice que é o "id"
+let { nome, alimento, bebida } = pedido; // desestruturação em js , eu desmembro todos os campos do objeto, pois quero mostrar muito usado em react
+console.log(`${index} - O Cliente: ${nome} fez o pedido do alimento: ${alimento} e a bebida: ${bebida}.`);
+})
+
+/*Depois foi iterado pelo forEach, dentro dele desestruturamos o valor (“pedido”) ( { nome, alimento, bebida } ) 
+e logo em seguida mostramos os pedidos no console com o posicionamento de cada Array utilizando o index.*/
+
+Map
+
+O Map é utilizado quando quero criar um novo array a partir de um array e também para editar o proprio array
+
+Imagine que precisamos verificar um valor do Array. Usaremos o mesmo exemplo do restaurante.
+
+Precisamos verificar se temos coxinha em nosso estoque, se não tiver ele envia para o Chefe da cozinha avisando que estão escolhendo o pedido e já podem preparar a bebida escolhida.
+
+//Lista de Pedidos
+let pedidos = [
+{'id': 420, 'nome':'Dener', 'alimento': 'Sandubão de Bacon', 'bebida': 'Suco Limão' },
+{'id': 152, 'nome':'Naiady', 'alimento': 'Sandubão Vegano', 'bebida': 'Suco de Laranja' },
+{'id': 29, 'nome':'Marcio', 'alimento': 'Coxinha', 'bebida': 'Suco de Uva' },
+{'id': 33, 'nome':'Isabel', 'alimento': 'Sandubão de Picanha', 'bebida': 'Refrigerante' },
+{'id': 55, 'nome':'José', 'alimento': 'Pizza', 'bebida': 'Refrigerante' }
+];
+
+//Iterador Map
+pedidos.map( ( pedido ) => {  //eu passo para a callbak o objeto "pedido"
+//perceba que ele varrendo seu array e quando for coxinha vai mostrar esta string
+if(pedido.alimento == 'Coxinha'){ //feita a verificação se existe ou não o alimento "Coxinha"
+return pedido.alimento = 'Não temos no momento'; //perceba ao inves de retornar 'Coxinha' ele retorna outra string 'Não temos no momento' 
+}
+});
+
+console.log(pedidos) // ao pedir para imprimir aonde tiver coxinha vai aparecer 'Não temos no momento'
+
+Filter
+
+Imagine que precisamos filtrar todos os pedidos que contém apenas Refrigerante nas bebidas, para agilizar os pedidos.
+
+//Lista de Pedidos
+let pedidos = [
+{'id': 420, 'nome':'Dener', 'alimento': 'Sandubão de Bacon', 'bebida': 'Suco Limão' },
+{'id': 152, 'nome':'Naiady', 'alimento': 'Sandubão Vegano', 'bebida': 'Suco de Laranja' },
+{'id': 29, 'nome':'Marcio', 'alimento': 'Coxinha', 'bebida': 'Suco de Uva' },
+{'id': 33, 'nome':'Isabel', 'alimento': 'Sandubão de Picanha', 'bebida': 'Refrigerante' },
+{'id': 55, 'nome':'José', 'alimento': 'Pizza', 'bebida': 'Refrigerante' }
+];
+
+//Iterador filter
+let filter = pedidos.filter( ( pedido ) => { //eu passo para a callbak o objeto "pedido"
+
+return pedido.bebida == 'Refrigerante'
+
+});
+
+console.log(filter)
+
+/*Perceba que fizemos diferente dos outros exemplos, salvamos o filtro de array em outra let.
+
+Essa let, ficou mais leve pois só tem pessoas que pediram refrigerante.*/
+
+
+Find
+
+Ele procura e te retorna 1 o primeiro valor encontrado da array.
+
+É bem parecido com o Filter, porém o Find eu utilizo muito quando temos a propriedade id em nosso Array.
+
+Não importa se tem dois pedidos com nome "Dener" ele vai trazer o primeiro que encontrar, por isso utilizamos
+
+identificadores como id, cpf pois é muito dificil ter duas pessoas como o mesmo id ou mesmo cpf
+
+//Lista de Pedidos
+let pedidos = [
+{'id': 420, 'nome':'Dener', 'alimento': 'Sandubão de Bacon', 'bebida': 'Suco Limão' },
+{'id': 152, 'nome':'Naiady', 'alimento': 'Sandubão Vegano', 'bebida': 'Suco de Laranja' },
+{'id': 29, 'nome':'Marcio', 'alimento': 'Coxinha', 'bebida': 'Suco de Uva' },
+{'id': 33, 'nome':'Isabel', 'alimento': 'Sandubão de Picanha', 'bebida': 'Refrigerante' },
+{'id': 55, 'nome':'José', 'alimento': 'Pizza', 'bebida': 'Refrigerante' }
+];
+
+//Iterador find
+let find = pedidos.find( ( pedido ) => { //eu passo para a callbak o objeto "pedido"
+
+return pedido.id == 420
+
+});
+
+console.log(find)
+
+Reduce
+
+A ideia dele é pegar todos os valores um Array e condensá-los  em um só.
+
+Vou usar os preços e somar o total que teve nessa leva do pedido da nossa Array
+
+//Lista de Pedidos
+let pedidos = [
+{'id': 420, 'nome':'Dener', 'alimento': 'Sandubão de Bacon', 'bebida': 'Suco Limão', 'preco': 100 },
+{'id': 152, 'nome':'Naiady', 'alimento': 'Sandubão Vegano', 'bebida': 'Suco de Laranja', 'preco': 59 },
+{'id': 29, 'nome':'Marcio', 'alimento': 'Coxinha', 'bebida': 'Suco de Uva', 'preco': 33 },
+{'id': 33, 'nome':'Isabel', 'alimento': 'Sandubão de Picanha', 'bebida': 'Refrigerante', 'preco': 79 },
+{'id': 55, 'nome':'José', 'alimento': 'Pizza', 'bebida': 'Refrigerante', 'preco': 47 }
+];
+
+//Iterador Reduce
+let reduce = pedidos.reduce( ( total, pedido ) => {
+
+let { preco } = pedido //desestruturação em js porque neste exemplo nao quero tudo do objeto eu quero apenas o preço de pedido
+return total + preco;
+},0); // este zero aqui é o valor inicial de total é o mesmo que atribuir anteriormente da soma o valor total = 0
+console.log(reduce) // total = 318
